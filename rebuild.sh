@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+build_type=Release
 
-mkdir ../cr-build
-cd ../cr-build
+dst=cr-build-$build_type
+mkdir ../$dst
+cd ../$dst
 rm * -rf
-cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug ../cr
+cmake -G Ninja -DCMAKE_BUILD_TYPE=$build_type ../cr
 ninja
 ls --color=tty -lah bin lib
