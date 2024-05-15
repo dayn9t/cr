@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 mkdir ../cr-build
 cd ../cr-build
 rm * -rf
