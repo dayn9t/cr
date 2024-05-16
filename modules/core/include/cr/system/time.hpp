@@ -128,6 +128,8 @@ namespace cr {
 	};
 	cr_struct_7f(DatetimeMember, year, month, day, hour, minute, second, day_of_week);
 
+	/// DatetimeMember 转字符串
+	string to_string(DatetimeMember m);
 
 	/// 字符串解析为日期时间成员，时间格式：YYYY-MM-DD[ _T]HH:MM:SS.SSS
 	bool parse(InString str, DatetimeMember& dm);

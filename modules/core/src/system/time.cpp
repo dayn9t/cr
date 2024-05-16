@@ -1,4 +1,3 @@
-
 #include <cr/system/time.hpp>
 
 #include <chrono>
@@ -8,44 +7,52 @@ using namespace std;
 
 //日期时间格式:https://zh.wikipedia.org/wiki/ISO_8601
 
-namespace cr {
-
+namespace cr
+{
     typedef std::chrono::system_clock sc;
 
-    static const char *time_format = "%02d:%02d:%02d";
+    static const char* time_format = "%02d:%02d:%02d";
 
-    string to_string(TimePoint time_point) {
-        const char *fmt = "%04d-%02d-%02dT%02d:%02d:%02d.%03dZ";
-
-        auto tc = utc_member(time_point);
+    string to_string(DatetimeMember m)
+    {
+        static const char* fmt = "%04d-%02d-%02dT%02d:%02d:%02d.%03dZ";
         char str[128];
-
-        sprintf(str, fmt, tc.year, tc.month, tc.day, tc.hour, tc.minute, int(tc.second), tc.msec());
+        sprintf(str, fmt, m.year, m.month, m.day, m.hour, m.minute, static_cast<int>(m.second), m.msec());
         return str;
     }
 
 
-    int time_zone_secs() {
-        time_t utc_time = 24 * 3600;        //utc:1970-01-02
+    string to_string(TimePoint time_point)
+    {
+        auto m = utc_member(time_point);
+        return to_string(m);
+    }
+
+
+    int time_zone_secs()
+    {
+        time_t utc_time = 24 * 3600; //utc:1970-01-02
 
         tm tm{};
         tm.tm_year = 70;
         tm.tm_mday = 2;
-        time_t local_time = mktime(&tm);    //local:1970-01-02
+        time_t local_time = mktime(&tm); //local:1970-01-02
 
         return int(utc_time - local_time);
     }
 
 
-    TimePoint to_time_point(InString str) {
+    TimePoint to_time_point(InString str)
+    {
         TimePoint tp{};
         parse(str, tp);
         return tp;
     }
 
 
-    bool parse(InString str, TimePoint &tp) {
-        const char *fmt = "%04d-%02d-%02dT%02d:%02d:%lfZ";
+    bool parse(InString str, TimePoint& tp)
+    {
+        const char* fmt = "%04d-%02d-%02dT%02d:%02d:%lfZ";
         DatetimeMember d{};
         auto n = sscanf(str.c_str(), fmt, &d.year, &d.month, &d.day, &d.hour, &d.minute, &d.second);
         if (n != 6) return false;
@@ -55,7 +62,8 @@ namespace cr {
     }
 
 
-    bool parse_local_date(InString str, TimePoint &date) {
+    bool parse_local_date(InString str, TimePoint& date)
+    {
         DatetimeMember d{};
         if (!parse_date(str, d)) return false;
         date = local_time_point(d);
@@ -63,79 +71,90 @@ namespace cr {
     }
 
 
-    Milliseconds msec(int n) {
+    Milliseconds msec(int n)
+    {
         return Milliseconds(n);
     }
 
 
-    Microseconds usec(int n) {
+    Microseconds usec(int n)
+    {
         return Microseconds(n);
     }
 
 
-    int64_t msecs_since_epoch(TimePoint time_poin) {
+    int64_t msecs_since_epoch(TimePoint time_poin)
+    {
         return msecs(time_poin.time_since_epoch());
     }
 
 
-    int64_t msecs(Duration duration) {
+    int64_t msecs(Duration duration)
+    {
         return duration.count() * ClockPeriod::num / (ClockPeriod::den / 1000);
     }
 
 
-    double secs(Duration duration) {
+    double secs(Duration duration)
+    {
         return 1.0 * duration.count() * ClockPeriod::num / ClockPeriod::den;
     }
 
 
-    Duration scale(Duration duration, double s) {
+    Duration scale(Duration duration, double s)
+    {
         return duration_cast<Duration>(duration * s);
     }
 
 
-    TimePoint mix(TimePoint t1, TimePoint t2, double alpha) {
+    TimePoint mix(TimePoint t1, TimePoint t2, double alpha)
+    {
         auto d = (t2 - t1).count() * alpha;
         return t1 + Duration(Duration::rep(d));
     }
 
 
-    double secs_since_epoch(TimePoint time_point) {
+    double secs_since_epoch(TimePoint time_point)
+    {
         return secs(time_point.time_since_epoch());
     }
 
 
-    DatetimeMember to_datetime_member(tm tm) {
+    DatetimeMember to_datetime_member(tm tm)
+    {
         DatetimeMember tc = {
-                .year = 1900 + tm.tm_year,
-                .month = 1 + tm.tm_mon,
-                .day = tm.tm_mday,
-                .hour = tm.tm_hour,
-                .minute = tm.tm_min,
-                .second = double(tm.tm_sec),
-                .day_of_week = tm.tm_wday,
+            .year = 1900 + tm.tm_year,
+            .month = 1 + tm.tm_mon,
+            .day = tm.tm_mday,
+            .hour = tm.tm_hour,
+            .minute = tm.tm_min,
+            .second = double(tm.tm_sec),
+            .day_of_week = tm.tm_wday,
         };
         return tc;
     }
 
 
-    tm to_tm(DatetimeMember dtm) {
+    tm to_tm(DatetimeMember dtm)
+    {
         tm t = {
-                .tm_sec = int(dtm.second),
-                .tm_min = dtm.minute,
-                .tm_hour = dtm.hour,
-                .tm_mday = dtm.day,
-                .tm_mon = dtm.month - 1,
-                .tm_year = dtm.year - 1900,
-                .tm_wday = dtm.day_of_week,
+            .tm_sec = int(dtm.second),
+            .tm_min = dtm.minute,
+            .tm_hour = dtm.hour,
+            .tm_mday = dtm.day,
+            .tm_mon = dtm.month - 1,
+            .tm_year = dtm.year - 1900,
+            .tm_wday = dtm.day_of_week,
         };
         return t;
     }
 
 
-    template<typename F>
-    DatetimeMember time_nember(TimePoint time_point, F fun) {
+    template <typename F>
+    DatetimeMember time_nember(TimePoint time_point, F fun)
+    {
         auto msecs = msecs_since_epoch(time_point);
-        time_t timep = std::max(msecs / 1000, int64_t{});    //纪元前时间不被一些函数支持
+        time_t timep = std::max(msecs / 1000, int64_t{}); //纪元前时间不被一些函数支持
         auto tm = *fun(&timep);
 
         DatetimeMember dm = to_datetime_member(tm);
@@ -145,18 +164,21 @@ namespace cr {
     }
 
 
-    DatetimeMember utc_member(TimePoint time_point) {
+    DatetimeMember utc_member(TimePoint time_point)
+    {
         return time_nember(time_point, gmtime);
     }
 
 
-    DatetimeMember local_member(TimePoint time_point) {
+    DatetimeMember local_member(TimePoint time_point)
+    {
         return time_nember(time_point, localtime);
     }
 
 
-    bool parse(InString str, DatetimeMember &dm) {
-        const char *fmt = "%04d-%02d-%02d%c%02d:%02d:%lf";
+    bool parse(InString str, DatetimeMember& dm)
+    {
+        const char* fmt = "%04d-%02d-%02d%c%02d:%02d:%lf";
         string seps = " T_";
 
         DatetimeMember d{};
@@ -169,8 +191,9 @@ namespace cr {
     }
 
 
-    bool parse_date(InString str, DatetimeMember &dm) {
-        const char *fmt = "%04d-%02d-%02d";
+    bool parse_date(InString str, DatetimeMember& dm)
+    {
+        const char* fmt = "%04d-%02d-%02d";
 
         DatetimeMember d{};
         auto n = sscanf(str.c_str(), fmt, &d.year, &d.month, &d.day);
@@ -180,29 +203,34 @@ namespace cr {
     }
 
 
-    TimePoint utc_time_point(DatetimeMember datetime_member) {
-
+    TimePoint utc_time_point(DatetimeMember datetime_member)
+    {
         return local_time_point(datetime_member) + Seconds(time_zone_secs());
     }
 
 
-    TimePoint local_time_point(DatetimeMember datetime_member) {
+    TimePoint local_time_point(DatetimeMember datetime_member)
+    {
         auto tm = to_tm(datetime_member);
-        time_t t = mktime(&tm);    //1970-01-01的本地时间是无效值
+        time_t t = mktime(&tm); //1970-01-01的本地时间是无效值
 
         Milliseconds ms(t * 1000 + datetime_member.msec());
         return TimePoint(ms);
     }
 
 
-    string local_str(TimePoint time_point, bool has_msec) {
+    string local_str(TimePoint time_point, bool has_msec)
+    {
         auto tc = local_member(time_point);
 
         char str[128];
-        if (has_msec) {
+        if (has_msec)
+        {
             sprintf(str, "%04d-%02d-%02d %02d:%02d:%02d.%03d", tc.year, tc.month, tc.day, tc.hour, tc.minute,
                     int(tc.second), tc.msec());
-        } else {
+        }
+        else
+        {
             sprintf(str, "%04d-%02d-%02d %02d:%02d:%02d", tc.year, tc.month, tc.day, tc.hour, tc.minute,
                     int(tc.second));
         }
@@ -210,7 +238,8 @@ namespace cr {
     }
 
 
-    string local_date_str(TimePoint time_point) {
+    string local_date_str(TimePoint time_point)
+    {
         auto tc = local_member(time_point);
         char str[128];
         sprintf(str, "%04d-%02d-%02d", tc.year, tc.month, tc.day);
@@ -218,13 +247,17 @@ namespace cr {
     }
 
 
-    string local_time_str(TimePoint time_point, bool has_msec) {
+    string local_time_str(TimePoint time_point, bool has_msec)
+    {
         auto tc = local_member(time_point);
 
         char str[128];
-        if (has_msec) {
+        if (has_msec)
+        {
             sprintf(str, "%02d:%02d:%02d.%03d", tc.hour, tc.minute, int(tc.second), tc.msec());
-        } else {
+        }
+        else
+        {
             sprintf(str, time_format, tc.hour, tc.minute, int(tc.second));
         }
         return str;
@@ -232,16 +265,19 @@ namespace cr {
 
 
     ClockTime::ClockTime(InString str)
-            : m_secs() {
+        : m_secs()
+    {
         int hour, min, sec;
         auto n = sscanf(str.c_str(), time_format, &hour, &min, &sec);
-        if (n == 3) {
+        if (n == 3)
+        {
             m_secs = ClockTime(hour, min, sec).m_secs;
         }
     }
 
 
-    string ClockTime::to_string() const {
+    string ClockTime::to_string() const
+    {
         char str[64];
         sprintf(str, time_format, hour(), minute(), second());
         return str;
@@ -255,10 +291,13 @@ namespace cr {
     }
 #endif
 
-    Stopwatch::Stopwatch() {}
+    Stopwatch::Stopwatch()
+    {
+    }
 
 
-    void Stopwatch::start() {
+    void Stopwatch::start()
+    {
         if (started_) return;
         count_++;
         start_ = secs_since_epoch();
@@ -266,13 +305,15 @@ namespace cr {
     }
 
 
-    void Stopwatch::restart() {
+    void Stopwatch::restart()
+    {
         reset();
         start();
     }
 
 
-    double Stopwatch::stop() {
+    double Stopwatch::stop()
+    {
         if (!started()) return 0;
         auto d = secs_since_epoch() - start_;
         elapsed_ += d;
@@ -281,12 +322,14 @@ namespace cr {
     }
 
 
-    void Stopwatch::reset() {
+    void Stopwatch::reset()
+    {
         *this = Stopwatch();
     }
 
 
-    bool Stopwatch::started() const {
+    bool Stopwatch::started() const
+    {
         return started_;
     }
 
@@ -300,7 +343,8 @@ namespace cr {
     double Stopwatch::average() const { return elapsed_ / count_; }
 
 
-    string Stopwatch::to_string() const {
+    string Stopwatch::to_string() const
+    {
         char str[256] = {};
         sprintf(str, "Stopwatch(count:%ld elapsed:%f average:%f)",
                 count(), elapsed(), average());
