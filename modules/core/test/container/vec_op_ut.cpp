@@ -4,7 +4,7 @@
 
 TEST(Vec, basic) {
     {
-        CrUBytes b1 = cr_vec_new(U8, 10);
+        CrU8s b1 = cr_vec_new(U8, 10);
                 TR(cr_vec_empty(b1));
                 EQ(b1.capacity, 10);
                 NE(b1.data, nullptr);
@@ -14,14 +14,14 @@ TEST(Vec, basic) {
                 EQ(b1.data, nullptr);
     }
     {
-        CrUBytes b1 = {};
+        CrU8s b1 = {};
                 TR(cr_vec_empty(b1));
                 TR(cr_vec_full(b1));
     }
     {
         U8 d1[4] = {};
 
-        CrUBytes b1 = {4, 0, d1};
+        CrU8s b1 = {4, 0, d1};
                 TR(cr_vec_empty(b1));
                 FA(cr_vec_full(b1));
         cr_vec_push(b1, 1);
@@ -66,7 +66,7 @@ TEST(Vec, basic) {
                 EQ(cr_vec_last(b1), 2);
 
         U8 d4[4] = {};
-        CrUBytes b2 = {4, 4, d4};
+        CrU8s b2 = {4, 4, d4};
         cr_vec_copy(b2, b1);
                 EQ(b1.size, 4);
                 EQ(cr_vec_first(b1), 0);

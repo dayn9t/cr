@@ -73,5 +73,5 @@
 
 /// 用指定的值填充向量
 #define cr_vec_set(arr_, value_) do { \
-    for(SizeT i_ = 0; i_ < arr_.size; ++i_) cr_vec_at(arr_, i_) = value_; \
+    for(U32 i_ = 0; i_ < arr_.size; ++i_) cr_vec_at(arr_, i_) = value_; \
 } while (0)
