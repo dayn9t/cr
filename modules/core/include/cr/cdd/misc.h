@@ -13,14 +13,14 @@ typedef struct CrColor_ {
 
 /// 缓冲区
 typedef struct CrBuffer_ {
-    SizeT size;
+    U32t size;
     U8 *data;
 } CrBuffer;
 
 
 /// 缓冲区 - 只读产数据
 typedef struct CrConstBuffer_ {
-    SizeT size;
+    U32t size;
     U8 *const data;
 
 } CrConstBuffer;

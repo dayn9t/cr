@@ -12,8 +12,8 @@
 /// 定义指定类型的向量
 #define cr_vec_def(T_, Name_) \
 typedef struct { \
-    SizeT capacity; \
-    SizeT size; \
+    U32 capacity; \
+    U32 size; \
     T_ *data; \
 } Name_
 

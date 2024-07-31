@@ -33,7 +33,7 @@ typedef struct CrImage_ {
     /// 图像尺寸
     CrSize size;
     /// 图像通道数量
-    SizeT channel_num;
+    U32 channel_num;
     /// 图像通道数量
     CrImageChannel channels[8];
 } CrImage;

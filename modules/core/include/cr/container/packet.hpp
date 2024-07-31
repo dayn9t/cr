@@ -125,7 +125,7 @@ namespace cr {
         size_t free_space() const { return capacity_ - size_; }
 
         /// 剩余空间缓冲区
-        CrUBytes free_buffer() { return {free_space(), 0, end()}; }
+        CrU8s free_buffer() { return {U32(free_space()), 0, end()}; }
 
         /// 相等判断
         bool operator==(const Packet &p) const;

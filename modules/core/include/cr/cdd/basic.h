@@ -11,8 +11,15 @@
 /// 无符号字节
 typedef unsigned char U8;
 
-/// 1维尺寸类型, 与C中size_t定义一致
-typedef unsigned long SizeT;
+/// 带符号32位整数
+typedef int I32;
+
+/// 无符号32位整数
+typedef unsigned int U32;
+
+/// 无符号字节
+typedef unsigned char U8;
+
 
 /// 二进制数值定义
 #define KILO				(1<<10)
