@@ -8,6 +8,10 @@
 /// - 其他待定
 ///
 
+
+/// 带符号字节
+typedef signed char I8;
+
 /// 无符号字节
 typedef unsigned char U8;
 
@@ -17,8 +21,11 @@ typedef int I32;
 /// 无符号32位整数
 typedef unsigned int U32;
 
-/// 无符号字节
-typedef unsigned char U8;
+/// 带符号32位整数
+typedef long long I64;
+
+/// 无符号32位整数
+typedef unsigned long long U64;
 
 
 /// 二进制数值定义
@@ -28,4 +35,3 @@ typedef unsigned char U8;
 #define TERA				(1<<40)
 #define PETA				(1<<50)
 #define EXA				    (1<<60)
-
