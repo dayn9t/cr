@@ -24,5 +24,4 @@ typedef unsigned long SizeT;
 #define TERA				(1<<40)
 #define PETA				(1<<50)
 #define EXA				    (1<<60)
-#define ZETTA				(1<<70)
-#define YOTTA				(1<<80)
+

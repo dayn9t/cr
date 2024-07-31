@@ -42,8 +42,12 @@
 /// 确保条件成功，否则抛出 CrError(code, msg)
 #define cr_ensure_or_msg(cond, code, msg) while(!(cond)) { throw cr_error_msg(code, msg); }
 
+/// 确保条件成功，否则抛出 CrError(code, data1)
+#define cr_ensure_or_data1(cond, code, data1) while(!(cond)) { throw cr_error_data(code, data1, 0); }
 /// 确保条件成功，否则抛出 CrError(code, data1, data2)
-#define cr_ensure_or_data(cond, code, data1, data2) while(!(cond)) { throw cr_error_data(code, data1, data2); }
+#define cr_ensure_or_data2(cond, code, data1, data2) while(!(cond)) { throw cr_error_data(code, data1, data2); }
+
+
 
 /// 确保条件成功，否则抛出 CrError(code, data1, data2, msg)
 #define cr_ensure_or_all(cond, code, data1, data2, msg) while(!(cond)) { throw cr_error_all(code, data1, data2, msg); }
@@ -52,7 +56,8 @@
 #define ensure(cond) cr_ensure(cond)
 #define ensure_or(cond, code) cr_ensure_or(cond, code)
 #define ensure_or_msg(cond, code, msg) cr_ensure_or_msg(cond, code, msg)
-#define ensure_or_data(cond, code, data1, data2) cr_ensure_or_data(cond, code, data1, data2)
+#define ensure_or_data1(cond, code, data1) cr_ensure_or_data1(cond, code, data1)
+#define ensure_or_data2(cond, code, data1, data2) cr_ensure_or_data2(cond, code, data1, data2)
 #define ensure_or_all(cond, data1, data2, msg) cr_ensure_or_all(cond, data1, data2, msg)
 #endif
 

@@ -16,7 +16,7 @@
 #define CXR_UNKNOWN_EXCEPTION			0x0012
 
 /// C接口返回的错误信息
-typedef struct CrError_ {
+typedef struct CrErrorImp {
     /// 错误编号
     int code;
     /// 错误程序所在行号

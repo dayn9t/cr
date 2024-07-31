@@ -36,7 +36,7 @@ int main() {
             []() { cr_ensure(1 == 2)},
             []() { cr_ensure_or(1 == 2, 0x11)},
             []() { cr_ensure_or_msg(1 == 2, 0x12, "a message")},
-            []() { cr_ensure_or_data(1 == 2, 0x13, 11, 12)},
+            []() { cr_ensure_or_data2(1 == 2, 0x13, 11, 12)},
             []() { cr_ensure_or_all(1 == 2, 0x14, 11, 12, "a message")},
             []() { throw std::runtime_error("error's position lost"); },
     };
