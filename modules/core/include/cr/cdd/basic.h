@@ -12,7 +12,7 @@
 typedef unsigned char Byte;
 
 /// 无符号字节
-typedef unsigned char UByte;
+typedef unsigned char U8;
 
 /// 1维尺寸类型, 与C中size_t定义一致
 typedef unsigned long SizeT;

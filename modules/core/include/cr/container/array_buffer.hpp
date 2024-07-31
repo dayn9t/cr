@@ -167,7 +167,7 @@ namespace cr {
 	};
 
 
-	using ArrayBuffer = FixedVec<UByte>;
+	using ArrayBuffer = FixedVec<U8>;
 
 
 	/** BufferSegment.
@@ -190,7 +190,7 @@ namespace cr {
 		/// 获取数据尺寸
 		int size() const { return m_buffer->size() - m_offset; }			
 		/// 获取数据起点
-		UByte* begin() { return m_buffer->begin() + m_offset; }
+		U8* begin() { return m_buffer->begin() + m_offset; }
 		/// 判断是否村存在数据
 		bool empty() { return size() == 0; }
 

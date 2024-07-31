@@ -4,7 +4,7 @@
 
 namespace cr {
 
-    void ImageChannel::set_to(UByte value) {
+    void ImageChannel::set_to(U8 value) {
         cr_ensure(width() == pitch())   // FIXME: 非连续图像有待支持
         auto a = pitch_area();
         memset(data_, value, pitch_area());

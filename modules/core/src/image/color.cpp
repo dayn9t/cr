@@ -34,7 +34,7 @@ namespace cr {
     const Color Color::colors[] = {red, orange, yellow, green, cyan, blue, purple, black, white, gray};
 
 
-    const UByte color_tab[16][3] = {
+    const U8 color_tab[16][3] = {
             {0xff, 0x00, 0x00},    // RED
             {0xff, 0x80, 0x00},    // ORANGE
             {0xff, 0xff, 0x00},    // YELLOW
@@ -102,7 +102,7 @@ namespace cr {
 
 
     // 实际上是YCrCb->RGB
-    void yuv2rgb(UByte y, UByte u, UByte v, UByte &r, UByte &g, UByte &b) {
+    void yuv2rgb(U8 y, U8 u, U8 v, U8 &r, U8 &g, U8 &b) {
         int u1 = u - 128;
         int v1 = v - 128;
 

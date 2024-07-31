@@ -11,7 +11,7 @@ namespace cr {
         ImageChannel() = default;
 
         /// 构造图像通道-从数据成员
-        ImageChannel(Size size, UByte *data, int pitch = 0, UByte default_color = 0, int col_step = 1)
+        ImageChannel(Size size, U8 *data, int pitch = 0, U8 default_color = 0, int col_step = 1)
                 : size_(size), pitch_(pitch ? pitch : size.width), col_step_(col_step), data_(data),
                   default_color_(default_color) {}
 
@@ -32,7 +32,7 @@ namespace cr {
         int col_step() const { return col_step_; }
 
         /// 获取尺寸
-        UByte *data() const { return data_; }
+        U8 *data() const { return data_; }
 
         /// 获取简要信息
         string brief() const;
@@ -41,11 +41,11 @@ namespace cr {
         size_t pitch_area() const { return pitch_ * size_.height; }
 
         /// 获取平面内指定行指针
-        UByte *row(int i) const { return data_ + pitch_ * i; }
+        U8 *row(int i) const { return data_ + pitch_ * i; }
 
     public:
         /// 数据设置成指定值
-        void set_to(UByte value);
+        void set_to(U8 value);
 
         /// 图像像素设置为默认值
         void clear() { set_to(default_color_); }
@@ -54,8 +54,8 @@ namespace cr {
         Size size_{};
         int pitch_{};
         int col_step_{};
-        UByte *data_{};
-        UByte default_color_{};
+        U8 *data_{};
+        U8 default_color_{};
     };
 
     /// 图像通道集合

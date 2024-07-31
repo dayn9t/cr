@@ -21,4 +21,4 @@ typedef struct { \
 cr_vec_def(Byte, CrBytes);
 
 /// 无符号字节向量
-cr_vec_def(UByte, CrUBytes);
+cr_vec_def(U8, CrUBytes);

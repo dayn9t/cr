@@ -23,7 +23,7 @@ typedef struct CrImageChannel_ {
     /// 列步长, 一般: 平面排列为1, 交错排列如RGB为3
     int col_step;
     /// 数据指针
-    UByte *data;
+    U8 *data;
 } CrImageChannel;
 
 /// 图像

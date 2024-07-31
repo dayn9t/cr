@@ -2,7 +2,6 @@
 
 #include "basic.h"
 
-
 /// 没有错误
 #define CXR_OK					        0x0000
 /// 未知错误
@@ -18,11 +17,11 @@
 /// C接口返回的错误信息
 typedef struct CrErrorImp {
     /// 错误编号
-    int code;
+    U32 code;
     /// 错误程序所在行号
-    int line;
+    U32 line;
     /// 错误相关数据
-    int data[2];
+    I32 data[2];
     /// 错误程序所在文件
     const char *file;
     /// 错误相关文本信息, 必须是静态生命周期

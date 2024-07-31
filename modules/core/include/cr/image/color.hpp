@@ -14,10 +14,10 @@ namespace cr {
     /// 颜色
     struct Color {
     public:
-        UByte b = 0;
-        UByte g = 0;
-        UByte r = 0;
-        UByte a = 0;
+        U8 b = 0;
+        U8 g = 0;
+        U8 r = 0;
+        U8 a = 0;
     public:
         /// 默认构建黑色
         Color() {}
@@ -26,7 +26,7 @@ namespace cr {
         explicit Color(uint32_t argb) { reset(argb); }
 
         /// 根据分量创建颜色
-        explicit Color(UByte b, UByte g, UByte r, UByte a = 0)
+        explicit Color(U8 b, U8 g, U8 r, U8 a = 0)
                 : b(b), g(g), r(r), a(a) {}
 
         /// 根据预定义索引创建颜色
@@ -149,7 +149,7 @@ namespace cr {
     void rgb2hsv(float r, float g, float b, float &h, float &s, float &v);
 
     /// 实际上是YCrCb->RGB
-    void yuv2rgb(UByte y, UByte u, UByte v, UByte &r, UByte &g, UByte &b);
+    void yuv2rgb(U8 y, U8 u, U8 v, U8 &r, U8 &g, U8 &b);
 
     void yuv2rgb(float y, float u, float v, float &r, float &g, float &b);
 
@@ -159,9 +159,9 @@ namespace cr {
     /// 颜色
     struct Yuv {
     public:
-        UByte y = 0;
-        UByte u = 128;
-        UByte v = 128;
+        U8 y = 0;
+        U8 u = 128;
+        U8 v = 128;
     public:
         /// RGB颜色转YUV
         Yuv(Color color);

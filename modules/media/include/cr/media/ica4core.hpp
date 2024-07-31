@@ -49,6 +49,7 @@ namespace ica {
             size.width /= 2;
             ret = Mat(size, _type, m.data(), m.pitch());
         }
+        return ret;
     }
 
     ///cr::Image -> Mat

@@ -102,8 +102,8 @@ namespace cr {
 
 	/// 类型作为ubytes
 	template<typename T>
-	UByte* as_ubytes(T& v)
+	U8* as_ubytes(T& v)
 	{
-		return reinterpret_cast<UByte*>(&v);
+		return reinterpret_cast<U8*>(&v);
 	}
 }

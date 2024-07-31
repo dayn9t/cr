@@ -117,7 +117,7 @@ namespace cr {
 		bool get(uint64_t& v) const;
 
 		/// 加载无符号整数
-		bool get(UByte& v) const;
+		bool get(U8& v) const;
 
 		/// 加载浮点数
 		bool get(float& v) const;

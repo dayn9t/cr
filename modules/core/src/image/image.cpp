@@ -23,7 +23,7 @@ namespace cr {
         total_len_ = offset;
     }
 
-    ImageChannels ImageLayout::lay_channels(UByte *data) const {
+    ImageChannels ImageLayout::lay_channels(U8 *data) const {
         int col_step = 1;
         ImageChannels cs;
         for (size_t i = 0; i < sizes_.size(); ++i) {
@@ -61,7 +61,7 @@ namespace cr {
     }
 
 
-    Image::Image(CrColorFormat format, Size size, UByte *data, size_t pitch)
+    Image::Image(CrColorFormat format, Size size, U8 *data, size_t pitch)
             : format_(format), size_(size) {
         auto layout = ImageLayout(format, size, pitch);
         channels_ = layout.lay_channels(data);

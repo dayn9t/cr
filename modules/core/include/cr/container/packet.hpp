@@ -72,12 +72,12 @@ namespace cr {
 
         /// 获取包中指定索引的元素的指针
         template<typename T>
-        UByte *element_ptr(size_t index) {
+        U8 *element_ptr(size_t index) {
             return begin() + offset_(index);
         }
 
         /// 获取包中指定索引的元素的指针, TODO: 应该用buffer
-        const UByte *element_ptr(size_t index) const {
+        const U8 *element_ptr(size_t index) const {
             return begin() + offset_(index);
         }
 
@@ -98,16 +98,16 @@ namespace cr {
         }
 
         /// 数据头指针
-        UByte *begin() { return data_; }
+        U8 *begin() { return data_; }
 
         /// 数据头指针
-        const UByte *begin() const { return data_; }
+        const U8 *begin() const { return data_; }
 
         /// 数据尾指针
-        UByte *end() { return data_ + size_; }
+        U8 *end() { return data_ + size_; }
 
         /// 数据尾指针
-        const UByte *end() const { return data_ + size_; }
+        const U8 *end() const { return data_ + size_; }
 
         /// 返回容器尺寸
         size_t size() const { return size_; }
@@ -171,7 +171,7 @@ namespace cr {
         }
 
     private:
-        UByte *data_ = nullptr;     // 数据指针
+        U8 *data_ = nullptr;     // 数据指针
         size_t capacity_ = 0;       // 最大容量
         size_t size_ = 0;           // 数据长度
         std::vector<size_t> lens_;  // 各个元素长度

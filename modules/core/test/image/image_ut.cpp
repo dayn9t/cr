@@ -6,7 +6,7 @@ TEST(image_layout, all) {
 
     Size size{9, 10};
     int pitch = 10;
-    UByte buffer[1024] = {};
+    U8 buffer[1024] = {};
     auto p = buffer;
 
     {

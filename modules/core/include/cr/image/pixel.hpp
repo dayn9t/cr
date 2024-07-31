@@ -9,7 +9,7 @@ namespace cr {
 	///三通道数据
 	struct U3C
 	{
-		UByte c[3];
+		U8 c[3];
 
 		///判断各通道值是否一致
 		bool same_value() const 
@@ -24,7 +24,7 @@ namespace cr {
 	///四通道数据
 	struct U4C
 	{
-		UByte c[4];
+		U8 c[4];
 	};
 	static_assert(sizeof(U4C) == 4, "U4C != 4");
 	//cx_struct_1f(U4C, c);
@@ -32,10 +32,10 @@ namespace cr {
 
 	/// 类型转字节
 	template<typename T>
-	UByte to_ubyte(T v)
+	U8 to_ubyte(T v)
 	{
 		if (v > 255) v = 255;
 		if (v < 0) v = 0;
-		return (UByte)v;
+		return (U8)v;
 	}
 }

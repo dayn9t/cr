@@ -13,7 +13,7 @@ namespace cr {
             Mat y_plane = to_cv(cs[0]);
             //Mat uv_plane() = to_cv(cs[1]);    TODO: CV_8UC2
             auto r0= to_cv(rect);
-            auto r1=to_cv(rect.scale(0.5));
+            //auto r1=to_cv(rect.scale(0.5));
             Yuv yuv(pen.color);
 
             cv::rectangle(y_plane, r0, cv::Scalar(yuv.y));

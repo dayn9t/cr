@@ -3,7 +3,7 @@
 #include <cr/geo.hpp>
 
 namespace cr {
-    inline void yuv2rgb_1_b(UByte y, UByte u, UByte v, UByte *r, UByte *g, UByte *b) {
+    inline void yuv2rgb_1_b(U8 y, U8 u, U8 v, U8 *r, U8 *g, U8 *b) {
         auto r1 = int(1.164 * (y - 16) + 1.596 * (v - 128));
         *r = r1 < 0 ? 0 : (r1 > 255 ? 255 : r1);
         auto g1 = int(1.164 * (y - 16) - 0.392 * (u - 128) - 0.813 * (v - 128));
@@ -49,14 +49,14 @@ namespace cr {
 
 
     // float=>ubyte 16次
-    inline void float2byte_16(float *src, UByte *dst) {
+    inline void float2byte_16(float *src, U8 *dst) {
         for (int i = 0; i < 16; i++) {
-            dst[i] = src[i] < 0 ? 0 : UByte(src[i] > 255 ? 255 : src[i]);
+            dst[i] = src[i] < 0 ? 0 : U8(src[i] > 255 ? 255 : src[i]);
         }
     }
 
     // YUV=>RGB 16次
-    inline void yuv2rgb_16(UByte *y, float *u16, float *v16, UByte *r, UByte *g, UByte *b) {
+    inline void yuv2rgb_16(U8 *y, float *u16, float *v16, U8 *r, U8 *g, U8 *b) {
         float y16[16];
         float r16[16];
         float g16[16];

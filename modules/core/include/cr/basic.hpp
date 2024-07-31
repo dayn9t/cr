@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cr/cdd/basic.h>
 #include "dbc.hpp"
 #include <vector>
 #include <array>

@@ -5,7 +5,7 @@
 namespace cr {
 
     Packet::Packet(size_t capacity) {
-        data_ = new UByte[capacity];
+        data_ = new U8[capacity];
         capacity_ = capacity;
     }
 

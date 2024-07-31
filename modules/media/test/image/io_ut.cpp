@@ -2,7 +2,7 @@
 #include <cr/test.hpp>
 
 TEST(Image, io) {
-    UByte data[1 << 20] = {};
+    U8 data[1 << 20] = {};
     Size size(640, 360);
     {
         Image img1(CR_CF_BGR_P, size, data);

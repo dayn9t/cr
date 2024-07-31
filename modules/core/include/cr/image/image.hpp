@@ -30,7 +30,7 @@ namespace cr {
 
     public:
         /// 连续放置通道
-        ImageChannels lay_channels(UByte *data) const;
+        ImageChannels lay_channels(U8 *data) const;
 
     private:
         // 行距
@@ -42,7 +42,7 @@ namespace cr {
         // 各通道偏移量
         vector<size_t> offsets_;
         // 各通道默认颜色
-        vector<UByte> colors_;
+        vector<U8> colors_;
     };
 
 
@@ -53,7 +53,7 @@ namespace cr {
         /// 通道尺寸系数
         SizeD size_factors[4];
         /// 通道默认颜色
-        UByte default_colors[4];
+        U8 default_colors[4];
 
         /// 获取图像通道数据长度
         size_t channel_len(size_t i, size_t max_channel_len) const;
@@ -72,7 +72,7 @@ namespace cr {
         Image() = default;
 
         /// 构建图像
-        Image(CrColorFormat format, Size size, UByte *data, size_t pitch = 0);
+        Image(CrColorFormat format, Size size, U8 *data, size_t pitch = 0);
 
         /// 构建图像
         Image(CrColorFormat format, Size size, const ImageChannels& channels)
@@ -95,10 +95,10 @@ namespace cr {
         bool empty() const { return size_.empty(); }
 
         /// 获取数据指针
-        UByte *data() { return (*this)[0].data(); }
+        U8 *data() { return (*this)[0].data(); }
 
         /// 获取数据指针
-        const UByte *data() const { return (*this)[0].data(); }
+        const U8 *data() const { return (*this)[0].data(); }
 
         /// 获取指定通道
         ImageChannel operator[](size_t i) {
