@@ -37,7 +37,7 @@ namespace cr {
         CrImage img = {
                 .format = image.format(),
                 .size = to_c(image.size()),
-                .channel_num = image.channels().size(),
+                .channel_num = U32(image.channels().size()),
         };
         auto &cs = image.channels();
         for (size_t i = 0; i < cs.size(); ++i) {
