@@ -51,6 +51,10 @@
 /// 确保条件成功，否则抛出 CrError(code, data1, data2, msg)
 #define cr_ensure_or_all(cond, code, data1, data2, msg) while(!(cond)) { throw cr_error_all(code, data1, data2, msg); }
 
+/// 确保 CrError 无错，否则抛出 CrError
+#define cr_ensure_ret(err) while(err.code != CRC_OK) { throw err; }
+
+
 #ifdef CRC_DBC_NO_PREFIX
 #define ensure(cond) cr_ensure(cond)
 #define ensure_or(cond, code) cr_ensure_or(cond, code)
@@ -98,6 +102,7 @@ namespace cr {
 
     /// 生成错误信息
     inline CrError error(uint32_t code, uint32_t line, const char *file, int data1=0, int data2=0, const char *message= nullptr) {
+        static_assert(sizeof(CrError) == 32);
         CrError e = {code, line, {data1, data2}, cut_path(file, CRC_FILEPATH_CUT_N), message};
         return e;
     }

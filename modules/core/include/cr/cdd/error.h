@@ -28,3 +28,9 @@ typedef struct CrErrorImp {
     const char *message;
 } CrError;
 
+/// 对象指针转化为句柄类型
+#define cr_handle_cast(_ptr, _Handle) _Handle{reinterpret_cast<U64>(_ptr)}
+
+/// 句柄类型转化为对象指针
+#define cr_object_cast(_handle, _Object) reinterpret_cast<_Object*>(_handle.ptr)
+
