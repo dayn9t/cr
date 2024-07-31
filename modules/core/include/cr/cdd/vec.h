@@ -17,8 +17,7 @@ typedef struct { \
     T_ *data; \
 } Name_
 
-/// 字节向量
-cr_vec_def(Byte, CrBytes);
+
 
 /// 无符号字节向量
-cr_vec_def(U8, CrUBytes);
+cr_vec_def(U8, CrU8s);

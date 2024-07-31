@@ -8,9 +8,6 @@
 /// - 其他待定
 ///
 
-/// 字节
-typedef unsigned char Byte;
-
 /// 无符号字节
 typedef unsigned char U8;
 
