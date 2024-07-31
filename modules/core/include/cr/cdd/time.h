@@ -24,4 +24,4 @@ typedef struct CrTimeRangeCS
     CrTimePoint start;
     /// 结束时间
     CrTimePoint end;
-} CrTimeRangeCS;
+} CrTimeRange;

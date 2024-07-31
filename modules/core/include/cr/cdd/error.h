@@ -34,3 +34,10 @@ typedef struct CrErrorImp {
 /// 句柄类型转化为对象指针
 #define cr_object_cast(_handle, _Object) reinterpret_cast<_Object*>(_handle.ptr)
 
+/// 对象销毁函数体
+#define cr_destroy_fun_body(_handle, _Object) \
+    return cr::catch_error([&]{ \
+        auto ob = cr_object_cast(_handle, _Object); \
+        delete ob; \
+    })
+
