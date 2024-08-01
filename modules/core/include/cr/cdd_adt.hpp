@@ -10,9 +10,20 @@
 
 #include <cr/cdd/geo.h>
 #include <cr/cdd/image.h>
+#include <cr/cdd/time.h>
+
 #include <cr/image/image.hpp>
+#include <cr/system/time.hpp>
 
 namespace cr {
+
+
+    /// 转化 CrTimePoint => TimePoint
+    inline TimePoint get_time_point(const CrTimePoint& time_point)
+    {
+        return TimePoint(Duration(time_point.nsecs));
+    }
+
 
     inline Point get_point(CrPoint p) { return {p.x, p.y}; }
 
