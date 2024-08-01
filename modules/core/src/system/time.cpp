@@ -38,7 +38,7 @@ namespace cr
         tm.tm_mday = 2;
         time_t local_time = mktime(&tm); //local:1970-01-02
 
-        return int(utc_time - local_time);
+        return static_cast<int>(utc_time - local_time);
     }
 
 
@@ -71,6 +71,16 @@ namespace cr
     }
 
 
+    bool parse_local_datetime(InString str, TimePoint& datetime)
+    {
+        DatetimeMember dm = {};
+        auto r = parse(str, dm);
+        if (!r) return false;
+        datetime = local_time_point(dm);
+        return true;
+    }
+
+
     Milliseconds msec(int n)
     {
         return Milliseconds(n);
@@ -88,10 +98,21 @@ namespace cr
         return msecs(time_poin.time_since_epoch());
     }
 
+    int64_t nsecs_since_epoch(TimePoint time_poin)
+    {
+        return nsecs(time_poin.time_since_epoch());
+    }
+
 
     int64_t msecs(Duration duration)
     {
         return duration.count() * ClockPeriod::num / (ClockPeriod::den / 1000);
+    }
+
+
+    int64_t nsecs(Duration duration)
+    {
+        return duration.count() * ClockPeriod::num / (ClockPeriod::den / 1000000000);
     }
 
 
@@ -291,9 +312,7 @@ namespace cr
     }
 #endif
 
-    Stopwatch::Stopwatch()
-    {
-    }
+    Stopwatch::Stopwatch() = default;
 
 
     void Stopwatch::start()

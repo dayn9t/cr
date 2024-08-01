@@ -74,6 +74,9 @@ namespace cr {
 	/// 字符串解析为日期，时间格式：YYYY-MM-DD
 	bool parse_local_date(InString str, TimePoint& date);
 
+	/// 字符串解析为本地日期时间，时间格式：YYYY-MM-DDTHH:MM:SS.SSS
+	bool parse_local_datetime(InString str, TimePoint& date);
+
 	/// 获取指定毫秒的时长
 	Milliseconds msec(int n);
 
@@ -101,11 +104,17 @@ namespace cr {
 	/// 纪元至今的毫秒数
 	int64_t msecs_since_epoch(TimePoint time_point = now());
 
+	/// 纪元至今的纳秒数
+	int64_t nsecs_since_epoch(TimePoint time_point = now());
+
 	/// 混合两个时间点
 	TimePoint mix(TimePoint t1, TimePoint t2, double alpha);
 
 	/// 持续时间代表的毫秒数
 	int64_t msecs(Duration duration);
+
+	/// 持续时间代表的纳秒数
+	int64_t nsecs(Duration duration);
 
 	/// 持续时间缩放
 	Duration scale(Duration duration, double s);

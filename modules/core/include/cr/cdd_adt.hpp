@@ -8,21 +8,33 @@
 /// - from_c: C++ <= C, 大部分被 get_* 系列函数替代, 待定
 ///
 
+#include <map>
 #include <cr/cdd/geo.h>
 #include <cr/cdd/image.h>
 #include <cr/cdd/time.h>
+#include <cr/cdd/net.h>
 
 #include <cr/image/image.hpp>
 #include <cr/system/time.hpp>
 
 namespace cr {
 
+    using StrMap = std::map<string, string>;
 
     /// 转化 CrTimePoint => TimePoint
     inline TimePoint get_time_point(const CrTimePoint& time_point)
     {
         return TimePoint(Duration(time_point.nsecs));
     }
+
+    /// 转化 TimePoint => CrTimePoint
+    inline CrTimePoint to_c(const TimePoint& time_point)
+    {
+        return CrTimePoint{ nsecs_since_epoch(time_point) };
+    }
+
+    /// 解析 URL 字符串
+    bool parse_url(InString& url_str, CrEndpoint& endpoint, CrAuthInfo& auth, StrMap& params);
 
 
     inline Point get_point(CrPoint p) { return {p.x, p.y}; }
