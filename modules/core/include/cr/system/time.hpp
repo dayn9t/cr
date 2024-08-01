@@ -66,16 +66,16 @@ namespace cr {
 	string to_string(TimePoint tp);
 
 	/// 字符串转为时间点
-	TimePoint to_time_point(InString s);
+	TimePoint to_time_point(string_view s);
 
 	/// 字符串解析为时间，时间格式：YYYY-MM-DDTHH:MM:SS.SSSZ
-	bool parse(InString str, TimePoint& tp);
+	bool parse(string_view str, TimePoint& tp);
 
 	/// 字符串解析为日期，时间格式：YYYY-MM-DD
-	bool parse_local_date(InString str, TimePoint& date);
+	bool parse_local_date(string_view str, TimePoint& date);
 
 	/// 字符串解析为本地日期时间，时间格式：YYYY-MM-DDTHH:MM:SS.SSS
-	bool parse_local_datetime(InString str, TimePoint& date);
+	bool parse_local_datetime(string_view str, TimePoint& date);
 
 	/// 获取指定毫秒的时长
 	Milliseconds msec(int n);
@@ -141,10 +141,10 @@ namespace cr {
 	string to_string(DatetimeMember m);
 
 	/// 字符串解析为日期时间成员，时间格式：YYYY-MM-DD[ _T]HH:MM:SS.SSS
-	bool parse(InString str, DatetimeMember& dm);
+	bool parse(string_view str, DatetimeMember& dm);
 
 	/// 字符串解析为日期成员，时间格式：YYYY-MM-DD
-	bool parse_date(InString str, DatetimeMember& dm);
+	bool parse_date(string_view str, DatetimeMember& dm);
 
 	/// UTC DatetimeMember转换为时间点
 	TimePoint utc_time_point(DatetimeMember datetime_member);
@@ -187,7 +187,7 @@ namespace cr {
 		{}
 
 		/// 根据字符串构造
-		explicit ClockTime(InString str);
+		explicit ClockTime(string_view str);
 	public:
 		/// <获取小时
 		int hour() const { return m_secs / 3600; }

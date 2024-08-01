@@ -34,7 +34,7 @@ namespace cr {
     }
 
     /// 解析 URL 字符串
-    bool parse_url(InString& url_str, CrEndpoint& endpoint, CrAuthInfo& auth, StrMap& params);
+    bool parse_url(InString& url_str, CrEndpoint& endpoint, CrAuthInfo& auth, string& path, StrMap& params);
 
 
     inline Point get_point(CrPoint p) { return {p.x, p.y}; }

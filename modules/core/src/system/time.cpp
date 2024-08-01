@@ -42,7 +42,7 @@ namespace cr
     }
 
 
-    TimePoint to_time_point(InString str)
+    TimePoint to_time_point(string_view str)
     {
         TimePoint tp{};
         parse(str, tp);
@@ -50,11 +50,11 @@ namespace cr
     }
 
 
-    bool parse(InString str, TimePoint& tp)
+    bool parse(string_view str, TimePoint& tp)
     {
         const char* fmt = "%04d-%02d-%02dT%02d:%02d:%lfZ";
         DatetimeMember d{};
-        auto n = sscanf(str.c_str(), fmt, &d.year, &d.month, &d.day, &d.hour, &d.minute, &d.second);
+        auto n = sscanf(str.data(), fmt, &d.year, &d.month, &d.day, &d.hour, &d.minute, &d.second);
         if (n != 6) return false;
 
         tp = utc_time_point(d);
@@ -62,7 +62,7 @@ namespace cr
     }
 
 
-    bool parse_local_date(InString str, TimePoint& date)
+    bool parse_local_date(string_view str, TimePoint& date)
     {
         DatetimeMember d{};
         if (!parse_date(str, d)) return false;
@@ -71,7 +71,7 @@ namespace cr
     }
 
 
-    bool parse_local_datetime(InString str, TimePoint& datetime)
+    bool parse_local_datetime(string_view str, TimePoint& datetime)
     {
         DatetimeMember dm = {};
         auto r = parse(str, dm);
@@ -197,14 +197,14 @@ namespace cr
     }
 
 
-    bool parse(InString str, DatetimeMember& dm)
+    bool parse(string_view str, DatetimeMember& dm)
     {
         const char* fmt = "%04d-%02d-%02d%c%02d:%02d:%lf";
         string seps = " T_";
 
         DatetimeMember d{};
         char sep;
-        auto n = sscanf(str.c_str(), fmt, &d.year, &d.month, &d.day, &sep, &d.hour, &d.minute, &d.second);
+        auto n = sscanf(str.data(), fmt, &d.year, &d.month, &d.day, &sep, &d.hour, &d.minute, &d.second);
         if (n != 7 || seps.find(sep) == string::npos) return false;
 
         dm = d;
@@ -212,12 +212,12 @@ namespace cr
     }
 
 
-    bool parse_date(InString str, DatetimeMember& dm)
+    bool parse_date(string_view str, DatetimeMember& dm)
     {
         const char* fmt = "%04d-%02d-%02d";
 
         DatetimeMember d{};
-        auto n = sscanf(str.c_str(), fmt, &d.year, &d.month, &d.day);
+        auto n = sscanf(str.data(), fmt, &d.year, &d.month, &d.day);
         if (n != 3) return false;
         dm = d;
         return true;
@@ -285,11 +285,11 @@ namespace cr
     }
 
 
-    ClockTime::ClockTime(InString str)
+    ClockTime::ClockTime(string_view str)
         : m_secs()
     {
         int hour, min, sec;
-        auto n = sscanf(str.c_str(), time_format, &hour, &min, &sec);
+        auto n = sscanf(str.data(), time_format, &hour, &min, &sec);
         if (n == 3)
         {
             m_secs = ClockTime(hour, min, sec).m_secs;

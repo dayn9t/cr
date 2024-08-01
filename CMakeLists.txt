@@ -3,6 +3,15 @@ project(cr)
 
 message(STATUS "HIK_HEOP: " ${HIK_HEOP})
 
+
+#add_definitions(-DBOOST_ALL_DYN_LINK)
+set(Boost_USE_STATIC_LIBS ON)
+
+#find_package(Boost COMPONENTS url log log_setup filesystem thread REQUIRED)
+find_package(Boost COMPONENTS url REQUIRED)
+
+#link_libraries(boost_url)
+
 find_package(RapidJSON REQUIRED)
 if(DEFINED HIK_HEOP)
     set(CMAKE_SYSTEM_NAME Linux)

@@ -21,7 +21,7 @@ namespace cr
         //cout << "Fragment: " <<  url.fragment() << endl;
     }
 
-    bool parse_url(InString& url_str, CrEndpoint& endpoint, CrAuthInfo& auth, StrMap& params)
+    bool parse_url(InString& url_str, CrEndpoint& endpoint, CrAuthInfo& auth, string& path, StrMap& params)
     {
         auto url = Url(url_str);
 
@@ -33,6 +33,7 @@ namespace cr
         strncpy(auth.user, url.user().data(), CR_USER_MAX_LEN);
         strncpy(auth.password, url.password().data(), CR_PASSWORD_MAX_LEN);
 
+        path = url.path();
 
         for (auto p : url.params())
         {
