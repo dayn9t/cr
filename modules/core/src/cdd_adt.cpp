@@ -27,8 +27,8 @@ namespace cr
 
         show_parts(url);
 
-        strncpy(endpoint.hostname, url.host().data(), CR_HOSTNAME_MAX_LEN);
-        endpoint.port_number = url.port_number();
+        strncpy(endpoint.host, url.host().data(), CR_HOST_MAX_LEN);
+        endpoint.port = url.port_number();
 
         strncpy(auth.user, url.user().data(), CR_USER_MAX_LEN);
         strncpy(auth.password, url.password().data(), CR_PASSWORD_MAX_LEN);

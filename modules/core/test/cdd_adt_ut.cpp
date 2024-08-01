@@ -19,8 +19,8 @@ TEST(cdd, parse_url) {
     StrMap queries;
     TR(parse_url(url, endpoint, auth, path, queries));
 
-    EQ(endpoint.hostname, host);
-    EQ(endpoint.port_number, port);
+    EQ(endpoint.host, host);
+    EQ(endpoint.port, port);
 
     EQ(auth.user, user);
     EQ(auth.password, password);
