@@ -36,6 +36,4 @@ namespace cr
         char* m_ptr;
         size_t m_capacity;
     };
-
-    //strncpy(d.serial_number, info.serial_number.c_str(), CR_SN_MAX_LEN);
 }
