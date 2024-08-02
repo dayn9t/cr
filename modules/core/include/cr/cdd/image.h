@@ -3,7 +3,7 @@
 #include "geo.h"
 
 /// 色彩格式定义
-typedef enum CrColorFormat_ {
+typedef enum {
     CR_CF_UNKNOWN,
     CR_CF_RGB,
     CR_CF_BGR,
@@ -15,13 +15,13 @@ typedef enum CrColorFormat_ {
 } CrColorFormat;
 
 /// 图像通道
-typedef struct CrImageChannel_ {
+typedef struct {
     /// 图像尺寸
     CrSize size;
     /// 行偏移
-    int pitch;
+    I32 pitch;
     /// 列步长, 一般: 平面排列为1, 交错排列如RGB为3
-    int col_step;
+    I32 col_step;
     /// 数据指针
     U8 *data;
 } CrImageChannel;

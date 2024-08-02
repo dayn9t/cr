@@ -4,8 +4,8 @@
 
 /// 2D点 - int坐标
 typedef struct {
-    int x;
-    int y;
+    I32 x;
+    I32 y;
 } CrPoint;
 
 /// 2D点 - float坐标
@@ -23,8 +23,8 @@ typedef struct {
 
 /// 2D尺寸 - int坐标
 typedef struct {
-    int width;
-    int height;
+    I32 width;
+    I32 height;
 } CrSize;
 
 
@@ -44,10 +44,10 @@ typedef struct {
 
 /// 矩形 - int坐标
 typedef struct {
-    int x;
-    int y;
-    int width;
-    int height;
+    I32 x;
+    I32 y;
+    I32 width;
+    I32 height;
 } CrRect;
 
 /// 矩形 - float坐标

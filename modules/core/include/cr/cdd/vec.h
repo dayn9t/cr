@@ -18,6 +18,5 @@ typedef struct { \
 } Name_
 
 
-
 /// 无符号字节向量
-cr_vec_def(U8, CrU8s);
+cr_vec_def(U8, CrBytes);

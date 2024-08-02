@@ -15,7 +15,7 @@ typedef struct
 typedef struct
 {
     /// 用户名
-    char user[16];
+    char user[32];
     /// 用户密码
-    char password[16];
+    char password[32];
 } CrAuthInfo;

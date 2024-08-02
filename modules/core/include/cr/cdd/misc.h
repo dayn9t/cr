@@ -4,10 +4,10 @@
 
 /// 颜色 - 字节
 typedef struct {
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
+    U8 r;
+    U8 g;
+    U8 b;
+    U8 a;
 } CrColor;
 
 
