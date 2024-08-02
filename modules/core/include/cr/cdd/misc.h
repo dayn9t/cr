@@ -3,7 +3,7 @@
 #include "basic.h"
 
 /// 颜色 - 字节
-typedef struct CrColor_ {
+typedef struct CrColorC {
     unsigned char r;
     unsigned char g;
     unsigned char b;
@@ -12,15 +12,15 @@ typedef struct CrColor_ {
 
 
 /// 缓冲区
-typedef struct CrBuffer_ {
-    U32t size;
+typedef struct CrBufferC {
+    U32 size;
     U8 *data;
 } CrBuffer;
 
 
 /// 缓冲区 - 只读产数据
-typedef struct CrConstBuffer_ {
-    U32t size;
+typedef struct CrConstBufferC {
+    U32 size;
     U8 *const data;
 
 } CrConstBuffer;

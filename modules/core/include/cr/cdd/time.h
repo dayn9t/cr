@@ -3,14 +3,14 @@
 #include "basic.h"
 
 /// 时间点
-typedef struct CrTimePointCS
+typedef struct CrTimePointC
 {
     /// 从时间纪元开始的到现在的时间长度(纳秒)
     I64 nsecs;
 } CrTimePoint;
 
 /// 时间长度
-typedef struct CrDurationCS
+typedef struct CrDurationC
 {
     /// 事件长度(纳秒)
     I64 nsecs;

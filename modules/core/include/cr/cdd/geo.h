@@ -3,47 +3,47 @@
 #include "vec.h"
 
 /// 2D点 - int坐标
-typedef struct CrPoint_ {
+typedef struct CrPointC {
     int x;
     int y;
 } CrPoint;
 
 /// 2D点 - float坐标
-typedef struct CrPointF_ {
+typedef struct CrPointFC {
     float x;
     float y;
 } CrPointF;
 
 /// 2D点 - 浮点数坐标
-typedef struct CrPointD_ {
+typedef struct CrPointDC {
     double x;
     double y;
 } CrPointD;
 
 
 /// 2D尺寸 - int坐标
-typedef struct CrSize_ {
+typedef struct CrSizeC {
     int width;
     int height;
 } CrSize;
 
 
 /// 2D尺寸 - float坐标
-typedef struct CrSizeF_ {
+typedef struct CrSizeFC {
     float width;
     float height;
 } CrSizeF;
 
 
 /// 矩形 - double坐标
-typedef struct CrSizeD_ {
+typedef struct CrSizeDC {
     double width;
     double height;
 } CrSizeD;
 
 
 /// 矩形 - int坐标
-typedef struct CrRect_ {
+typedef struct CrRectC {
     int x;
     int y;
     int width;
@@ -51,7 +51,7 @@ typedef struct CrRect_ {
 } CrRect;
 
 /// 矩形 - float坐标
-typedef struct CrRectF_ {
+typedef struct CrRectFC {
     float x;
     float y;
     float width;
@@ -59,7 +59,7 @@ typedef struct CrRectF_ {
 } CrRectF;
 
 /// 矩形 - double数坐标
-typedef struct CrRectD_ {
+typedef struct CrRectDC {
     double x;
     double y;
     double width;

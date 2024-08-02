@@ -10,7 +10,7 @@
 #define CR_PASSWORD_MAX_LEN 16
 
 /// 网络地址/端点
-typedef struct CrEndpointCS
+typedef struct CrEndpointC
 {
     /// 主机名
     char host[CR_HOST_MAX_LEN];
@@ -19,7 +19,7 @@ typedef struct CrEndpointCS
 } CrEndpoint;
 
 /// 认证信息
-typedef struct CrAuthInfoCS
+typedef struct CrAuthInfoC
 {
     /// 用户名
     char user[16];

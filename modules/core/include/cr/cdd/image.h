@@ -27,7 +27,7 @@ typedef struct CrImageChannel_ {
 } CrImageChannel;
 
 /// 图像
-typedef struct CrImage_ {
+typedef struct CrImageC {
     /// 色彩格式
     CrColorFormat format;
     /// 图像尺寸
