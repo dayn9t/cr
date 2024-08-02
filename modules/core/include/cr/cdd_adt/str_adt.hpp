@@ -23,20 +23,14 @@ namespace cr
 
     public:
         /// 转化字符串
-        string to_string() const
-        {
-            return string(m_ptr);
-        }
+        string to_string() const { return string(m_ptr); }
 
         /// 获取数据
-        char* data()
-        {
-            return m_ptr;
-        }
+        char* data() { return m_ptr; }
 
     public:
-        /// 用零结尾字符串赋值
-        StrX& operator=(const char* p);
+        /// 字符串赋值
+        StrX& operator=(const string_view& s);
 
     private:
         char* m_ptr;

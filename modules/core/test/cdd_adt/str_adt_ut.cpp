@@ -10,6 +10,8 @@ TEST(Str, all)
     EQ(s2.data(), s1);
 
     s2 = "wang";
-
     EQ(s1, string("wang"));
+
+    s2 = string("jiang");
+    EQ(s1, string("jiang"));
 }
