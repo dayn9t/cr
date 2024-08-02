@@ -15,7 +15,7 @@
 #define CRC_UNKNOWN_EXCEPTION			0x0012
 
 /// C接口返回的错误信息
-typedef struct CrErrorC {
+typedef struct {
     /// 错误编号
     U32 code;
     /// 错误程序所在行号
