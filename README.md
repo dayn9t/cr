@@ -3,4 +3,10 @@
 目标是为C/C++程序衔接Rust提供桥桥梁.
 
 - crcore 核心库
-  - 错误处理, 异常捕获与转换 
+  - 错误处理, 异常捕获与转换
+
+## 依赖
+
+- libboost-dev 1.85+
+- libgtest-dev
+- rapidjson-dev

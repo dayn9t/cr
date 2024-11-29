@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <cr/cdd/error.h>
 #include <string>
 #include <functional>
